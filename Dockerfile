@@ -7,8 +7,9 @@ ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # environment settings
-ENV BEETSDIR="/config"
-ENV EDITOR="nano"
+ENV BEETSDIR="/config" \
+HOME="/config"  \
+EDITOR="nano"
 
 # install runtime packages
 RUN \
@@ -71,12 +72,12 @@ RUN \
 
 # install pip packages
  pip install --no-cache-dir -U \
-	beets \
+ 	beets \
+	beets-copyartifacts \
 	flask \
 	pillow \
 	pip \
 	pyacoustid \
-	beets-copyartifacts \	
 	pylast && \
 
 # cleanup
